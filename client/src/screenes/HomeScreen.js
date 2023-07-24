@@ -1,8 +1,9 @@
 import {Col, Row} from "react-bootstrap";
 import Product from "../components/Product";
-import {useGetProductsQuery} from "../redux/slices/productsSlice";
+import {useGetProductsQuery} from "../redux/slices/productsApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Title from "../components/Title";
 
 const HomeScreen = () => {
     const {data: products, error, isLoading} = useGetProductsQuery();
@@ -16,12 +17,10 @@ const HomeScreen = () => {
                     {error?.data?.message || error.error}
                 </Message>
             ) : (<>
-                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 className="h2">Latest Products</h1>
-                </div>
+                <Title title={"Latest Products"}/>
                 <Row>
                     {products.map((product) => (
-                        <Col sm={12} md={6} lg={4} xl={3}>
+                        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                             <Product product={product} />
                         </Col>
                     ))}

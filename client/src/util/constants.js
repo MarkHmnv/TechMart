@@ -1,5 +1,9 @@
 export const BASE_URL = "";
+export const AUTH_URL = "/api/v1/auth";
 export const PRODUCTS_URL = "/api/v1/products";
 export const USERS_URL = "/api/v1/users";
 export const ORDERS_URL = "/api/v1/orders";
-export const PAYPAL_URL = "/api/v1/config/paypal"
+export const PAYPAL_URL = "/api/v1/config/paypal";
+export const SHIPPING_THRESHOLD = 100;
+export const SHIPPING_PRICE = 10;
+export const TAX_RATE = 0.15;
