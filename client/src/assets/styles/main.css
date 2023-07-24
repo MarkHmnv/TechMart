@@ -50,3 +50,11 @@
     border-radius: 50%;
     display: block;
 }
+
+.cart-badge {
+    margin-left: 5px;
+}
+
+.message {
+    text-align: center;
+}
