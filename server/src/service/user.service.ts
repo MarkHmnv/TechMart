@@ -7,6 +7,7 @@ import {UserProfile} from "../model/response/user-profile.dto";
 import {UserReq} from "../model/interface/UserReq";
 import {UserUpdate} from "../model/request/user-update.dto";
 import {UserExistsException} from "../exception/user-exists.exception";
+import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class UserService {
@@ -23,6 +24,10 @@ export class UserService {
             const isExists = await this.isUserExistsByEmail(userUpdate.email)
             if(isExists)
                 throw new UserExistsException();
+        }
+
+        if(userUpdate.password) {
+            user.password = await this.hashPassword(userUpdate.password);
         }
 
         const updatedUser = await this.userModel.findByIdAndUpdate(
@@ -47,5 +52,9 @@ export class UserService {
     async isUserExistsByEmail(email: string): Promise<boolean> {
         const count = await this.userModel.countDocuments({ email }).exec();
         return count > 0;
+    }
+
+    private async hashPassword(password: string): Promise<string> {
+        return bcrypt.hashSync(password, 10);
     }
 }
