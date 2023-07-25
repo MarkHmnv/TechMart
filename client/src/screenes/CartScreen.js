@@ -10,7 +10,7 @@ const CartScreen = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cart = useSelector(state => state.cart);
-    const {cartItems, totalCartItemQuantity} = cart;
+    const {cartItems} = cart;
 
     const addToCartHandler = async (item, quantity) => {
         dispatch(addToCart({...item, quantity}));
@@ -79,17 +79,21 @@ const CartScreen = () => {
                         <Card>
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
-                                    <h5>
-                                        Quantity: {totalCartItemQuantity} {totalCartItemQuantity > 1 ? "items" : "item"}
-                                    </h5>
-                                    <h5>Items price: ${cart.itemsPrice}</h5>
-                                    {cart.shippingPrice > 0 && (
-                                        <h5>Shipping price: ${cart.shippingPrice}</h5>
-                                    )}
-                                    <h5>Tax price: ${cart.taxPrice}</h5>
-                                    <h4 className="fw-bold">Total price: ${cart.totalPrice}</h4>
+                                    <h2>Cart summary</h2>
                                 </ListGroup.Item>
-                                <ListGroup.Item className="d-flex justify-content-center">
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Quantity:</Col>
+                                        <Col>{cart.totalCartItemQuantity}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Items price:</Col>
+                                        <Col>${cart.itemsPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
                                     <Button
                                         type="button"
                                         className="btn-block"
@@ -101,6 +105,7 @@ const CartScreen = () => {
                                 </ListGroup.Item>
                             </ListGroup>
                         </Card>
+
                     </Col>
                 </Row>
             )}

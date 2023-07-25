@@ -1,4 +1,4 @@
-import {IsEmail, IsNotEmpty, Length} from "class-validator";
+import {IsEmail, IsNotEmpty, IsOptional, Length, Matches} from "class-validator";
 
 export class UserUpdate {
     @IsNotEmpty()
@@ -8,4 +8,9 @@ export class UserUpdate {
     @IsEmail()
     @Length(2, 100)
     email: string;
+
+    @IsOptional()
+    @Length(6, 32)
+    @Matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/, { message: 'Password too weak' })
+    password: string;
 }

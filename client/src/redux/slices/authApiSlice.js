@@ -28,6 +28,10 @@ const authSlice = createSlice({
             state.name = null;
             localStorage.removeItem("accessToken");
             localStorage.removeItem("name");
+        },
+        updateName: (state, action) => {
+            state.name = action.payload;
+            localStorage.setItem("name", JSON.stringify(name));
         }
     }
 });
@@ -51,6 +55,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const {setAccessToken, removeAccessToken} = authSlice.actions;
+export const {setAccessToken, removeAccessToken, updateName} = authSlice.actions;
 export const {useRegisterMutation, useLoginMutation} = authApiSlice;
 export default authSlice.reducer;

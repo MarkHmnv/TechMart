@@ -7,3 +7,5 @@ export const PAYPAL_URL = "/api/v1/config/paypal";
 export const SHIPPING_THRESHOLD = 100;
 export const SHIPPING_PRICE = 10;
 export const TAX_RATE = 0.15;
+export const DEFAULT_PAYMENT_METHOD = "PayPal";
+export const TOTAL_CHECKOUT_STEPS = 3;

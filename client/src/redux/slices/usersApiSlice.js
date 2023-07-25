@@ -6,7 +6,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         getProfile: builder.query({
             query: () => `${USERS_URL}/profile`
         }),
+        updateProfile: builder.mutation({
+            query: (updateRequest) => ({
+                url: `${USERS_URL}/profile`,
+                method: "PATCH",
+                body: updateRequest
+            })
+        }),
     })
 });
 
-export const {useGetProfileQuery} = usersApiSlice;
+export const {useGetProfileQuery, useUpdateProfileMutation} = usersApiSlice;

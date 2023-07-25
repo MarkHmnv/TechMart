@@ -13,6 +13,10 @@ import {UserController} from "./controller/user.controller";
 import {AuthController} from "./controller/auth.controller";
 import {AuthService} from "./service/auth.service";
 import {JwtModule} from "@nestjs/jwt";
+import {OrderController} from "./controller/order.controller";
+import {OrderService} from "./service/order.service";
+import {ConfigController} from "./controller/config.controller";
+import {ConfigService} from "./service/config.service";
 
 @Module({
   imports: [
@@ -27,9 +31,9 @@ import {JwtModule} from "@nestjs/jwt";
           global: true,
           secret: process.env.SECRET,
           signOptions: { expiresIn: '60m' },
-      }),
+      })
   ],
-  controllers: [AuthController, UserController, ProductController],
-  providers: [AuthService, UserService, ProductService, DataFaker],
+  controllers: [AuthController, UserController, ProductController, OrderController, ConfigController],
+  providers: [AuthService, UserService, ProductService, DataFaker, OrderService, ConfigService],
 })
 export class AppModule {}

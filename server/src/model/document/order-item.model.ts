@@ -1,6 +1,5 @@
 import { Prop } from '@nestjs/mongoose';
 import { Types } from 'mongoose';
-import { Product } from './product.model';
 
 export class OrderItem {
     @Prop({ required: true })
