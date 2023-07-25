@@ -25,7 +25,7 @@ export class Order extends Document {
     paymentResult: PaymentResult;
 
     @Prop({ required: true, default: 0.0 })
-    itemPrice: number;
+    itemsPrice: number;
 
     @Prop({ required: true, default: 0.0 })
     taxPrice: number;
