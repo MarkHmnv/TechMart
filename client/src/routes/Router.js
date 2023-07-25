@@ -9,6 +9,12 @@ import ProductScreen from "../screenes/ProductScreen";
 import CartScreen from "../screenes/CartScreen";
 import LoginScreen from "../screenes/LoginScreen";
 import RegisterScreen from "../screenes/RegisterScreen";
+import ShippingScreen from "../screenes/ShippingScreen";
+import PrivateRoute from "../components/PrivateRoute";
+import PaymentScreen from "../screenes/PaymentScreen";
+import PlaceOrderScreen from "../screenes/PlaceOrderScreen";
+import OrderScreen from "../screenes/OrderScreen";
+import ProfileScreen from "../screenes/ProfileScreen";
 
 const InnerRouter = () => {
     const dispatch = useDispatch();
@@ -29,6 +35,14 @@ const InnerRouter = () => {
                 <Route path="/cart" element={<CartScreen/>} />
                 <Route path="/register" element={<RegisterScreen/>} />
                 <Route path="/login" element={<LoginScreen/>} />
+
+                <Route path="" element={<PrivateRoute />}>
+                    <Route path="/shipping" element={<ShippingScreen />} />
+                    <Route path="/payment" element={<PaymentScreen />} />
+                    <Route path="/placeorder" element={<PlaceOrderScreen />} />
+                    <Route path="/orders/:id" element={<OrderScreen />} />
+                    <Route path="/profile" element={<ProfileScreen />} />
+                </Route>
             </Route>
         </Routes>
     );
